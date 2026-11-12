@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chrono | Smart Clock</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">◷</div>
+                <div>
+                    <h2>Chrono</h2>
+                    <span>SMART CLOCK</span>
+                </div>
+            </div>
+
+            <p class="menu-label">MENU</p>
+
+            <nav class="navigation">
+
+                <button class="nav-item active" data-page="dashboard">
+                    <span>◫</span> Dashboard
+                </button>
+
+                <button class="nav-item" data-page="alarm">
+                    <span>◴</span> Alarm
+                </button>
+
+                <button class="nav-item" data-page="stopwatch">
+                    <span>◷</span> Stopwatch
+                </button>
+
+                <button class="nav-item" data-page="timer">
+                    <span>◉</span> Timer
+                </button>
+
+                <button class="nav-item" data-page="worldclock">
+                    <span>◎</span> World Clock
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button class="nav-item" id="theme-toggle">
+                    <span>☼</span> Change Theme
+                </button>
+
+                <div class="sidebar-footer">
+                    <span class="online-dot"></span>
+                    System Online
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOP HEADER -->
+
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">APPLICATION / <span id="page-name">DASHBOARD</span></p>
+                    <h1 id="welcome-heading">Welcome Back!</h1>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="profile">
+                        <div class="profile-avatar">C</div>
+                        <span>Chrono User</span>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD PAGE -->
+
+            <section class="page active" id="dashboard">
+
+                <div class="page-intro">
+                    <div>
+                        <h2>Your Time Dashboard</h2>
+                        <p>Manage your time efficiently and stay productive.</p>
+                    </div>
+
+                    <div class="date-badge" id="dashboard-date">
+                        Loading date...
+                    </div>
+                </div>
+
+
+                <!-- CLOCK CARD -->
+
+                <div class="dashboard-grid">
+
+                    <div class="clock-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="live-dot"></span>
+                                LIVE DIGITAL CLOCK
+                            </div>
+                            <span class="live-text">LIVE</span>
+                        </div>
+
+                        <div class="digital-time" id="digital-clock">
+                            00:00:00
+                        </div>
+
+                        <div class="time-period" id="time-period">
+                            AM
+                        </div>
+
+                        <p class="clock-date" id="clock-date">
+                            Loading...
+                        </p>
+
+                        <!-- ANALOG CLOCK -->
+
+                        <div class="analog-clock">
+
+                            <div class="clock-number n12">12</div>
+                            <div class="clock-number n3">3</div>
+                            <div class="clock-number n6">6</div>
+                            <div class="clock-number n9">9</div>
+
+                            <div class="clock-hand hour-hand" id="hour-hand"></div>
+                            <div class="clock-hand minute-hand" id="minute-hand"></div>
+                            <div class="clock-hand second-hand" id="second-hand"></div>
+
+                            <div class="clock-center"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT SIDE INFORMATION -->
+
+                    <div class="right-panel">
+
+                        <div class="info-card">
+                            <div class="info-icon blue">◴</div>
+                            <div>
+                                <p>Active Alarms</p>
+                                <h2 id="alarm-count">0</h2>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon purple">◷</div>
+                            <div>
+                                <p>Stopwatch</p>
+                                <h2>Ready</h2>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon cyan">◉</div>
+                            <div>
+                                <p>Timer</p>
+                                <h2>Available</h2>
+                            </div>
+                        </div>
+
+                        <div class="quote-card">
+                            <span>DAILY REMINDER</span>
+                            <h3>Make Every Second Count.</h3>
+                            <p>Time is your most valuable resource. Use it wisely.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ALARM PAGE -->
+
+            <section class="page" id="alarm">
+
+                <div class="page-intro">
+                    <div>
+                        <h2>Alarm Manager</h2>
+                        <p>Create and manage your daily alarms.</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+
+                    <h3>Set New Alarm</h3>
+
+                    
+<form id="alarm-form">
+
+    <div class="form-group">
+        <label for="alarm-time">Select Time</label>
+        <input type="time" id="alarm-time" required>
+    </div>
+
+    <div class="form-group">
+        <label for="alarm-label">Alarm Label</label>
+        <input type="text" id="alarm-label"
+            placeholder="e.g. Wake Up, Study Time">
+    </div>
+
+    <div class="form-group">
+        <label for="alarm-tone">Choose Alarm Tune</label>
+        <select id="alarm-tone" required>
+            <option value="classic">Classic Bell</option>
+            <option value="digital">Digital Beep</option>
+            <option value="melody">Morning Melody</option>
+        </select>
+    </div>
+
+    <button type="button" id="preview-tone" class="secondary-btn">
+        ▶ Preview Tune
+    </button>
+
+    <button type="submit" class="primary-btn">
+        + Add Alarm
+    </button>
+
+</form>
+
+<p id="alarm-status" class="status-message">
+    No alarm ringing.
+</p>
+
+<button id="stop-alarm" class="secondary-btn" disabled>
+    ■ Stop Alarm
+</button>
+
+                    <p id="alarm-status" class="status-message"></p>
+
+                </div>
+
+                <div class="content-card">
+                    <h3>Your Alarms</h3>
+                    <div id="alarm-list">
+                        <p class="empty-message">No alarms added yet.</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- STOPWATCH PAGE -->
+
+            <section class="page" id="stopwatch">
+
+                <div class="page-intro">
+                    <div>
+                        <h2>Stopwatch</h2>
+                        <p>Measure elapsed time accurately.</p>
+                    </div>
+                </div>
+
+                <div class="content-card stopwatch-card">
+
+                    <div class="stopwatch-icon">◷</div>
+
+                    <div id="stopwatch-display">
+                        00:00:00.00
+                    </div>
+
+                    <div class="control-buttons">
+
+                        <button id="start-stopwatch" class="primary-btn">
+                            Start
+                        </button>
+
+                        <button id="pause-stopwatch" class="secondary-btn" disabled>
+                            Pause
+                        </button>
+
+                        <button id="reset-stopwatch" class="secondary-btn">
+                            Reset
+                        </button>
+
+                        <button id="lap-stopwatch" class="secondary-btn" disabled>
+                            Lap
+                        </button>
+
+                    </div>
+
+                    <div class="lap-section">
+                        <h3>Lap Records</h3>
+                        <div id="lap-list">
+                            <p class="empty-message">No lap records yet.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TIMER PAGE -->
+
+            <section class="page" id="timer">
+
+                <div class="page-intro">
+                    <div>
+                        <h2>Countdown Timer</h2>
+                        <p>Set a duration and track your time.</p>
+                    </div>
+                </div>
+
+                <div class="content-card timer-card">
+
+                    <div class="timer-inputs">
+
+                        <div class="form-group">
+                            <label for="timer-hours">Hours</label>
+                            <input type="number" id="timer-hours" min="0" max="99" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timer-minutes">Minutes</label>
+                            <input type="number" id="timer-minutes" min="0" max="59" value="5">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timer-seconds">Seconds</label>
+                            <input type="number" id="timer-seconds" min="0" max="59" value="0">
+                        </div>
+
+                    </div>
+
+                    <div id="timer-display">00:05:00</div>
+
+                    <div class="control-buttons">
+
+                        <button id="start-timer" class="primary-btn">
+                            Start Timer
+                        </button>
+
+                        <button id="pause-timer" class="secondary-btn" disabled>
+                            Pause
+                        </button>
+
+                        <button id="reset-timer" class="secondary-btn">
+                            Reset
+                        </button>
+
+                    </div>
+
+                    <p id="timer-status" class="status-message"></p>
+
+                </div>
+
+            </section>
+
+
+            <!-- WORLD CLOCK PAGE -->
+
+            <section class="page" id="worldclock">
+
+                <div class="page-intro">
+                    <div>
+                        <h2>World Clock</h2>
+                        <p>Check the current time in different cities.</p>
+                    </div>
+                </div>
+
+                <div class="world-clock-grid">
+
+                    <div class="world-card">
+                        <h3>🇮🇳 India</h3>
+                        <p>New Delhi</p>
+                        <h2 class="world-time" data-zone="Asia/Kolkata">--:--:--</h2>
+                        <span>IST (UTC +5:30)</span>
+                    </div>
+
+                    <div class="world-card">
+                        <h3>🇺🇸 USA</h3>
+                        <p>New York</p>
+                        <h2 class="world-time" data-zone="America/New_York">--:--:--</h2>
+                        <span>Eastern Time</span>
+                    </div>
+
+                    <div class="world-card">
+                        <h3>🇬🇧 UK</h3>
+                        <p>London</p>
+                        <h2 class="world-time" data-zone="Europe/London">--:--:--</h2>
+                        <span>GMT / BST</span>
+                    </div>
+
+                    <div class="world-card">
+                        <h3>🇯🇵 Japan</h3>
+                        <p>Tokyo</p>
+                        <h2 class="world-time" data-zone="Asia/Tokyo">--:--:--</h2>
+                        <span>JST (UTC +9)</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="footer">
+                <p>© 2026 Chrono Smart Clock</p>
+                <p>Designed with HTML, CSS & JavaScript</p>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

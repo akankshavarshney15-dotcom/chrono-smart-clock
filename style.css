@@ -1,0 +1,1051 @@
+
+/* =================================
+   CHRONO - SMART CLOCK
+   Premium Navy Blue Dashboard
+================================= */
+
+/* GLOBAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #071426;
+    --sidebar: #0b1b30;
+    --card: #10243d;
+    --card-light: #142d4b;
+    --primary: #398bff;
+    --primary-light: #68b0ff;
+    --text: #f3f7ff;
+    --muted: #8da4c0;
+    --border: #203c5c;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    transition: 0.3s ease;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+/* MAIN LAYOUT */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 245px;
+    min-height: 100vh;
+    background: var(--sidebar);
+    border-right: 1px solid var(--border);
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 8px 35px;
+}
+
+.brand-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #398bff, #1762cf);
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    box-shadow: 0 5px 20px #398bff44;
+}
+
+.brand h2 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.brand span {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.menu-label {
+    color: #647d9a;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 0 12px;
+    margin-bottom: 15px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px 13px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.nav-item span {
+    font-size: 21px;
+    width: 23px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background: var(--card-light);
+    color: white;
+}
+
+.nav-item.active {
+    background: linear-gradient(90deg, #398bff33, #398bff0d);
+    color: #6bb3ff;
+    border-left: 3px solid var(--primary);
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-footer {
+    margin: 25px 10px 5px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.online-dot,
+.live-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #35d99a;
+    border-radius: 50%;
+    margin-right: 7px;
+    box-shadow: 0 0 10px #35d99a;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    margin-left: 245px;
+    width: calc(100% - 245px);
+    padding: 30px 38px;
+}
+
+/* TOPBAR */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.breadcrumb {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+.breadcrumb span {
+    color: var(--primary-light);
+}
+
+.topbar h1 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.profile-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #398bff, #785cff);
+    color: white;
+    font-weight: bold;
+}
+
+/* PAGE CONTROL */
+
+.page {
+    display: none;
+    animation: fadeIn 0.35s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PAGE INTRO */
+
+.page-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0 25px;
+    gap: 15px;
+}
+
+.page-intro h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.page-intro p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.date-badge {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 12px 16px;
+    color: var(--primary-light);
+    font-size: 12px;
+}
+
+/* DASHBOARD GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.8fr);
+    gap: 22px;
+}
+
+/* CLOCK PANEL */
+
+.clock-panel {
+    min-width: 0;
+    background:
+        radial-gradient(circle at 50% 30%, #1a4875 0%, transparent 65%),
+        linear-gradient(145deg, #112b49, #0d1e35);
+    border: 1px solid #294b70;
+    border-radius: 18px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 12px 40px #00000022;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    color: #b1c6df;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.live-text {
+    color: #35d99a;
+}
+
+.digital-time {
+    font-size: clamp(35px, 5vw, 62px);
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-top: 35px;
+    color: var(--primary-light);
+    text-shadow: 0 0 30px #398bff44;
+}
+
+.time-period {
+    font-size: 14px;
+    color: #b2d8ff;
+    margin-top: 5px;
+}
+
+.clock-date {
+    color: #a3b8d1;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* ANALOG CLOCK */
+
+.analog-clock {
+    width: 190px;
+    height: 190px;
+    border: 3px solid #4c9dff;
+    border-radius: 50%;
+    margin: 32px auto 5px;
+    position: relative;
+    background: #0a1c32;
+    box-shadow: 0 0 30px #398bff25,
+                inset 0 0 20px #398bff12;
+}
+
+.clock-number {
+    position: absolute;
+    font-size: 13px;
+    font-weight: 700;
+    color: #dcecff;
+}
+
+.n12 {
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.n3 {
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.n6 {
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.n9 {
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.clock-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 10px;
+}
+
+.hour-hand {
+    height: 43px;
+    width: 5px;
+    background: white;
+}
+
+.minute-hand {
+    height: 59px;
+    width: 3px;
+    background: #65aaff;
+}
+
+.second-hand {
+    height: 69px;
+    width: 2px;
+    background: #ff647d;
+}
+
+.clock-center {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+/* RIGHT PANEL */
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 19px;
+    transition: 0.25s;
+}
+
+.info-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.info-card p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 7px;
+}
+
+.info-card h2 {
+    font-size: 20px;
+}
+
+.info-icon {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    font-size: 24px;
+}
+
+.blue {
+    color: #65aaff;
+    background: #398bff20;
+}
+
+.purple {
+    color: #a18aff;
+    background: #8565ff20;
+}
+
+.cyan {
+    color: #54d9e8;
+    background: #54d9e820;
+}
+
+/* QUOTE CARD */
+
+.quote-card {
+    background: linear-gradient(135deg, #174b83, #15305a);
+    border: 1px solid #35679b;
+    border-radius: 13px;
+    padding: 22px;
+    margin-top: auto;
+}
+
+.quote-card span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #a8d2ff;
+}
+
+.quote-card h3 {
+    font-size: 19px;
+    margin: 13px 0;
+}
+
+.quote-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #b9d0e9;
+}
+
+/* CONTENT CARDS */
+
+.content-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 27px;
+    margin-bottom: 22px;
+}
+
+.content-card h3 {
+    font-size: 17px;
+    margin-bottom: 22px;
+}
+
+/* FORMS */
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 17px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+    min-width: 140px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: #a9bdd5;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #355473;
+    border-radius: 8px;
+    background: #091a2e;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px #398bff20;
+}
+
+/* BUTTONS */
+
+.primary-btn,
+.secondary-btn {
+    padding: 13px 21px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #398bff, #236bd5);
+    color: white;
+    box-shadow: 0 5px 15px #398bff30;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px #398bff50;
+}
+
+.secondary-btn {
+    background: #203c5c;
+    color: #dceaff;
+    border: 1px solid #355575;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: #2b527a;
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* STATUS AND EMPTY MESSAGES */
+
+.status-message {
+    color: var(--primary-light);
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+.empty-message {
+    color: var(--muted);
+    font-size: 13px;
+    padding: 15px 0;
+}
+
+/* ALARM LIST */
+
+.alarm-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.alarm-item h4 {
+    font-size: 20px;
+    color: var(--primary-light);
+}
+
+.alarm-item p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.alarm-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.small-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    color: white;
+    background: #294c70;
+}
+
+.delete-btn {
+    background: #8e3547;
+}
+
+/* STOPWATCH */
+
+.stopwatch-card,
+.timer-card {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 22px;
+}
+
+.stopwatch-icon {
+    font-size: 45px;
+    color: var(--primary-light);
+}
+
+#stopwatch-display,
+#timer-display {
+    font-size: clamp(35px, 6vw, 57px);
+    font-weight: 700;
+    color: var(--primary-light);
+    letter-spacing: 3px;
+    margin: 30px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* LAP RECORDS */
+
+.lap-section {
+    text-align: left;
+    margin-top: 35px;
+    border-top: 1px solid var(--border);
+    padding-top: 25px;
+}
+
+.lap-section h3 {
+    margin-bottom: 15px;
+}
+
+.lap-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    color: #b9cce1;
+    font-size: 13px;
+}
+
+/* TIMER INPUTS */
+
+.timer-inputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 550px;
+    margin: auto;
+    text-align: left;
+}
+
+.timer-inputs .form-group {
+    max-width: 130px;
+}
+
+/* WORLD CLOCK */
+
+.world-clock-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.world-card {
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: 0.25s;
+}
+
+.world-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.world-card h3 {
+    font-size: 18px;
+}
+
+.world-card p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.world-time {
+    font-size: 29px;
+    color: var(--primary-light);
+    margin: 20px 0 10px;
+    font-variant-numeric: tabular-nums;
+}
+
+.world-card span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 30px 0 10px;
+    margin-top: 30px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* LIGHT THEME */
+
+body.light-theme {
+    --background: #edf3fb;
+    --sidebar: #ffffff;
+    --card: #ffffff;
+    --card-light: #edf4fc;
+    --text: #172a42;
+    --muted: #657b96;
+    --border: #d6e1ef;
+}
+
+body.light-theme {
+    color: var(--text);
+}
+
+body.light-theme .clock-panel {
+    background: linear-gradient(145deg, #dcecff, #c9e0ff);
+    border-color: #b4d3fa;
+}
+
+body.light-theme .digital-time {
+    color: #176bd0;
+}
+
+body.light-theme .clock-date,
+body.light-theme .panel-header {
+    color: #365b83;
+}
+
+body.light-theme .analog-clock {
+    background: #eaf3ff;
+}
+
+body.light-theme .clock-number {
+    color: #193d64;
+}
+
+body.light-theme .hour-hand {
+    background: #173a60;
+}
+
+body.light-theme .clock-center {
+    background: #173a60;
+}
+
+body.light-theme .form-group input {
+    background: #f3f7fc;
+    color: #172a42;
+}
+
+body.light-theme .secondary-btn {
+    color: #173a60;
+    background: #e1ebf8;
+    border-color: #c4d5ea;
+}
+
+body.light-theme .alarm-item {
+    background: #f3f7fc;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 205px;
+    }
+
+    .main-content {
+        margin-left: 205px;
+        width: calc(100% - 205px);
+        padding: 25px 22px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .right-panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quote-card {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 65px;
+        padding: 20px 8px;
+    }
+
+    .brand {
+        padding: 0 0 30px;
+        justify-content: center;
+    }
+
+    .brand-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand h2,
+    .brand span,
+    .menu-label,
+    .nav-item:not(.active) {
+        font-size: 0;
+    }
+
+    .navigation .nav-item,
+    .sidebar-bottom .nav-item {
+        justify-content: center;
+        padding: 13px 5px;
+        font-size: 0;
+    }
+
+    .nav-item span {
+        font-size: 21px;
+    }
+
+    .sidebar-footer {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .main-content {
+        margin-left: 65px;
+        width: calc(100% - 65px);
+        padding: 20px 13px;
+    }
+
+    .topbar h1 {
+        font-size: 19px;
+    }
+
+    .profile span {
+        display: none;
+    }
+
+    .page-intro {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .digital-time {
+        letter-spacing: 0;
+    }
+
+    .right-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .world-clock-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        padding: 19px;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+
+/* =================================
+   CHRONO UI IMPROVEMENTS
+================================= */
+
+/* Better form controls */
+
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #355473;
+    border-radius: 8px;
+    background: #091a2e;
+    color: #ffffff;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    border-color: #398bff;
+    box-shadow: 0 0 0 3px #398bff20;
+}
+
+/* Alarm form spacing */
+
+#alarm-form {
+    align-items: end;
+    row-gap: 18px;
+}
+
+#stop-alarm {
+    margin-top: 15px;
+}
+
+#stop-alarm:disabled {
+    opacity: 0.4;
+}
+
+/* Better dashboard cards */
+
+.right-panel {
+    align-content: start;
+}
+
+.info-card {
+    min-height: 105px;
+}
+
+.quote-card {
+    min-height: 150px;
+}
+
+/* Consistent World Clock cards */
+
+.world-card {
+    min-height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.world-card h2 {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Better headings */
+
+.page-intro h2 {
+    letter-spacing: -0.5px;
+}
+
+.content-card {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Smooth interactions */
+
+.info-card,
+.world-card,
+.content-card,
+.nav-item {
+    transition: all 0.25s ease;
+}
+
+/* Light theme form controls */
+
+body.light-theme .form-group select {
+    background: #f3f7fc;
+    color: #172a42;
+    border-color: #c4d5ea;
+}
+
+/* Mobile alarm form */
+
+@media (max-width: 600px) {
+    #alarm-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #alarm-form .form-group,
+    #alarm-form button {
+        width: 100%;
+    }
+
+    .info-card {
+        min-height: 90px;
+    }
+}
