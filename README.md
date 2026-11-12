@@ -142,19 +142,19 @@ Open `index.html` using the Live Server extension or open it directly in your br
 ## 📸 Project Screenshots
 
 ### 1. Dashboard
-![Chrono Dashboard](screenshots/dashboard.png)
+![Chrono Dashboard](assets/dashboard.png)
 
 ### 2. Alarm Manager
-![Alarm Manager](screenshots/alarm.png)
+![Alarm Manager](assets/alarm.png)
 
 ### 3. Stopwatch
-![Stopwatch](screenshots/stopwatch.png)
+![Stopwatch](assets/stopwatch.png)
 
 ### 4. Countdown Timer
-![Countdown Timer](screenshots/timer.png)
+![Countdown Timer](assets/timer.png)
 
 ### 5. World Clock
-![World Clock](screenshots/worldclock.png)
+![World Clock](assets/worldclock.png)
 
 ## 🎯 Project Objective
 
